@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title> FORM	</title>
+	
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"> <!-- Including bootstrap -->
+  
+  <script type="text/javascript" src="jquery-2.2.0.min.js"></script> <!-- Including jquery -->
+	<script type="text/javascript" src="angular.min.js"> </script> <!-- Including AngularJS -->
+
+  <style type="text/css">
+	
+  .container /*Style description of the container of the form*/
+		{
+		  width:55%;
+		  font-size: 25;
+		  align-content: right;
+		  margin:0%;
+    }
+  
+    .info
+    {
+      font-size: 15px;
+      
+    }
+  
+    body
+    {
+      background-color: #ADD8E6;
+    }
+	
+  	.form-group
+		{
+			padding: 3%;
+		}
+
+    .well /*Describes the style of the well that contains the post-submission message*/
+    {
+      visibility: hidden;
+      height:10%;
+      width:20%;
+      background-color: #3EA99F;
+      position: absolute;
+      left: 30%;
+      top: 100%;
+      text-align: center;
+      align-content: center;
+    } 
+
+    #sub
+    {
+      position: absolute;
+      left: 10%;
+    } 
+    .invalid /*To print error messages in red text*/
+    {
+      color: red;
+    }
+	
+  </style>
+	
+  </head>
+
+<body ng-app="">
+
+<div class="container">
+
+  <h2>EVENT REGISTRATION - SAARANG 2017</h2>
+
+  <form  class="form-inline" name="testform" novalidate=""> <!-- Form -->
+
+  	<div class="form-group"> <!-- To input first name -->
+      	<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFirst Name:</label> 
+      	<input type="text" class="form-control" name="fn" ng-model="fn" id="first" required> <span class="invalid" id="firstname" ng-show="testform.fn.$touched && testform.fn.$invalid"> Please enter first name</span>
+    </div>
+    <br>
+    <div class="form-group"> <!-- To input last name -->
+      	<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLast Name:</label>
+      	<input type="text" class="form-control" name="ln" ng-model="ln" id="last" required><span class="invalid" id="lastname" ng-show="testform.ln.$touched && testform.ln.$invalid"> Please enter last name </span>
+    </div>
+    <br>
+    <div class="form-group"> <!-- To input roll number -->
+        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRoll Number:</label>
+        <input type="text" class="form-control" name="rn" ng-model="rn" required><span class="invalid" ng-show="testform.rn.$touched && testform.rn.$invalid"> Please enter roll number</span>
+    </div>
+    <br>
+    <div class="form-group"> <!-- To input college name -->
+        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCollege:</label>
+        <input type="text" class="form-control" name="coll" ng-model="coll" required><span class="invalid" ng-show="testform.coll.$touched && testform.coll.$invalid"> Please enter college name</span>
+    </div>
+    
+    <br>
+    <div class="form-group"> <!-- To input mobile number -->
+      	<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMobile:</label>
+      	<input type="text" class="form-control" name="mob" ng-model="mob" id="mobil" required> <span ng-show="testform.mob.$touched && testform.mob.$invalid" class="invalid" id="mobilenum" > Please enter mobile number </span>
+    </div>
+
+    <br>
+    <div class="form-group"> <!-- To input email ID -->
+        <label for="email">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEmail address:</label>
+        <input type="email" class="form-control" name="email" ng-model="email" id="email" required> <span class="invalid" id="emailerr" ng-show="testform.email.$touched && testform.email.$invalid"> Please enter email ID</span>
+    </div>
+
+    <br>
+    <div class="form-group"> <!-- To select event -->
+        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEvent:</label>
+        <select class="form-control"> <!-- Lists all the events in a dropdown box -->
+          <option> Choreo Night </option>
+          <option> Onsite Creative Writing </option>
+          <option> Tarang </option>
+          <option> Acapella </option>
+          <option> Buzzer Quiz </option>
+          <option> Dramatics </option>
+          <option> Mono-acting </option>
+          <option> Photography Contest </option>
+          <option> Panache </option>
+          <option> JAM </option>
+          <option> Spell Bee</option>
+          <option> Face-Painting Contest </option>
+        </select>
+    </div>
+    <br>
+
+    <div class="form-group" style="width: 100%;"> <!-- To select accomodation requirement -->
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" class="form-control" name="acc" style="width: 10%;"> <strong> Accomodation Required </strong>
+    </div>
+    
+
+  </form>
+
+  <br>
+  <!-- Submit button that calls checkPass() function on clicking it -->
+  <button onClick="checkPass()" id="sub" class="btn btn-primary btn-lg" style="position: absolute;left: 15%;">Submit</button>
+
+  <br>
+  <!-- Message to be printed if all values are valid -->
+  <div id="submitted" class="well"> <h5> <strong> SUBMITTED SUCCESSFULLY </h5> </strong> </div> 
+
+</div>
+
+<script type="text/javascript">
+
+function checkPass() //Function to validate all the input fields
+{
+
+  var flag=1; //Initially assumed that all input fields have valid values
+  var mailexp=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //Regular expression for validating e-mail
+
+  if(!document.testform.fn.value.match( /^[A-Za-z]+$/)) //Validation of first name using a regular expression
+  {
+     document.getElementById("firstname").className="invalid"; //Disables ng-show directive
+     document.getElementById("firstname").innerHTML=" Invalid First Name"; //Prints error message next to input box
+    document.getElementById("first").style.border="medium solid red"; //Sets input box border to red
+    document.testform.fn.focus(); //Focuses on the input field with errors
+    flag=0;    
+  }
+  else
+  {
+    document.getElementById("firstname").innerHTML="";
+  }
+    
+  if(!document.testform.ln.value.match( /^[A-Za-z]+$/)) //Validation of last name using a regular expression
+  {
+    document.getElementById("lastname").className="invalid";
+    document.getElementById("lastname").innerHTML="  Invalid Last Name";
+    document.getElementById("last").style.border="medium solid red";
+    document.testform.ln.focus() ;
+    flag=0;   
+  }
+  else
+  {
+    document.getElementById("lastname").innerHTML="";
+  }
+
+  if(!document.testform.email.value.match(mailexp)) //Validation of email ID using the regular expression mailexp
+  {
+    document.getElementById("emailerr").className="invalid";
+    document.getElementById("emailerr").innerHTML="  Invalid E-mail";
+    document.getElementById("email").style.border="medium solid red";
+    document.testform.email.focus();
+    flag=0;   
+  }
+  else
+  {
+    document.getElementById("emailerr").innerHTML="";
+  }
+
+  if(!(document.testform.mob.value.match( /^[0-9]+$/))||(document.testform.mob.value.length!=10)) //Validation of mobile number using rege exp
+  {
+    document.getElementById("mobilenum").className="invalid";
+    document.getElementById("mobilenum").innerHTML="  Invalid Mobile Number";
+    document.getElementById("mobil").style.border="medium solid red";
+    document.testform.mob.focus();
+    flag=0;   
+  }
+  else
+  {    
+    document.getElementById("mobilenum").innerHTML="";
+  }
+  
+  if(flag==1) //To execute when all input fields are correctly filled by user 
+  { 
+    document.getElementById("submitted").style.visibility="visible"; //Prints submission message
+    document.getElementById("sub").disabled=true; //Disables the submit button
+    document.getElementById("first").style.border="none"; //Removes red borders from input fields if all entries are valid
+    document.getElementById("last").style.border="none";
+    document.getElementById("email").style.border="none";
+    document.getElementById("mobil").style.border="none";
+    document.getElementById("pass1").style.border="none";
+    document.getElementById("pass2").style.border="none";
+    
+  }
+      
+}
+
+
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#D3D3D3"); //To change color of input boxes when focused on
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff"); //To change back to  default when focus is shifted
+    });
+});
+
+
+</script>
+
+</body>
+</html>

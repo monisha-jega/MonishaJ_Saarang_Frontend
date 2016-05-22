@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>Solar System	</title>
+
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"> <!-- Including bootstrap -->
+
+		<style type="text/css">
+
+		body
+		{
+			background-image: url("space1.png");
+		}
+		#sun /*Styling the sun*/
+		{
+			top: 250px;
+			left: 500px;
+			width: 100px;
+			height:100px;
+			position: absolute;
+			background-color: red;
+			border-radius: 50%;
+
+		}
+
+
+		#planet1reset /*Blue planet in initial position*/
+		{
+			top: 285px;
+			left:535px;
+			width: 30px;
+			height:30px;
+			position: absolute;
+			background-color: blue;
+			border-radius: 50%;
+
+			-webkit-transform: rotate(0deg) translateX(100px);
+			-moz-transform: rotate(0deg) translateX(100px);
+		}
+		.planet1anim /*Animation for blue planet*/
+		{
+			-webkit-animation: orbit1 4s linear infinite;
+			animation: orbit1 4s linear infinite;
+			-moz-animation: orbit1 4s linear infinite;
+		}
+		#border1 /*Orbital path of blue planet*/
+		{
+			border-color: black;
+			border:20px;
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+			position: absolute;
+			
+			border: 1px solid #666666;
+			
+			left:450px;
+			top: 200px;
+		}
+
+
+		#planet2reset /*Green planet in initial position*/
+		{
+			top:275px;
+			left:525px;
+			width: 50px;
+			height:50px;
+			position: absolute;
+			background-color: green;
+			border-radius: 50%;
+
+			-webkit-transform: rotate(0deg) translateX(200px);
+			-moz-transform: rotate(0deg) translateX(200px);
+		}
+		.planet2anim /*Animation for green planet*/
+		{
+			-webkit-animation: orbit2 2s linear infinite reverse;
+			-moz-animation: orbit2 2s linear infinite reverse;
+			animation: orbit2 2s linear infinite reverse;
+		}
+		#border2 /*Orbital path of green planet*/
+		{
+			border-color: black;
+			border:20px;
+			height: 400px;
+			width: 400px;
+			border-radius: 50%;
+			position: absolute;
+			
+			border: 1px solid #666666;
+			
+			left:350px;
+			top: 100px;
+		}
+
+
+		#planet3reset /*Yellow planet in initial position*/
+		{
+			top: 280px;
+			left:530px;
+			width: 40px;
+			height:40px;
+			position: absolute;
+			background-color: yellow;
+			border-radius: 50%;
+			-webkit-transform: rotate(0deg) translateX(300px);
+			-moz-transform: rotate(0deg) translateX(300px);
+		}
+		.planet3anim /*Animation for yellow planet*/
+		{
+			-webkit-animation: orbit3 6s linear infinite;
+			-moz-animation: orbit3 6s linear infinite;
+			animation: orbit3 6s linear infinite;
+		}
+		#border3 /*Orbital path of yellow planet*/
+		{
+			border-color: black;
+			height: 600px;
+			width: 600px;
+			border-radius: 50%;
+			position: absolute;
+			
+			border: 1px solid #666666;
+			
+			left:250px;
+			top: 0px;
+		}
+
+		/*Defining animation of blue planet*/
+		@-webkit-keyframes orbit1 
+		{
+    			from { -webkit-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+   				 to   { -webkit-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+		}
+		@keyframes orbit1
+		{
+				from { 	transform: rotate(0deg) translateX(100px) rotate(0deg); }
+				to   {  transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+		}
+		@-moz-keyframes orbit1 
+		{
+    			from { -moz-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+   				 to   { -moz-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+		}
+
+		/*Defining animation of green planet*/
+		@-webkit-keyframes orbit2 
+		{
+    			from { -webkit-transform: rotate(0deg) translateX(200px) rotate(0deg); }
+   				 to   { -webkit-transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+		}
+		@keyframes orbit2
+		 {
+				from { 	transform: rotate(0deg) translateX(200px) rotate(0deg); }
+				to   {  transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+		}
+		@-moz-keyframes orbit2 
+		{
+    			from { -moz-transform: rotate(0deg) translateX(200px) rotate(0deg); }
+   				 to   { -moz-transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+		}
+
+		/*Defining animation of yellow planet*/
+		@-webkit-keyframes orbit3
+		{
+    			from { -webkit-transform: rotate(0deg) translateX(300px) rotate(0deg); }
+   				 to   { -webkit-transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+		}
+		@keyframes orbit3
+		 {
+				from { 	transform: rotate(0deg) translateX(300px) rotate(0deg); }
+				to   {  transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+		}
+		@-moz-keyframes orbit3
+		{
+    			from { -moz-transform: rotate(0deg) translateX(300px) rotate(0deg); }
+   				 to   { -moz-transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+		}
+
+		#planet1 /*Division containing control buttons for blue planet*/
+		{
+			color: blue;
+			position: absolute;
+			top: 2%;
+			right: 20%;
+			align-content: center;
+			background-color: #A4C9DE;
+			border-radius: 20%;
+			padding: 3%;
+		}
+		#planet2 /*Division containing control buttons for green planet*/
+		{
+			color: green;
+			position: absolute;
+			top: 35%;
+			right: 2%;
+			align-content: center;
+			background-color: #82E9AD;
+			border-radius: 20%;
+			padding: 3%;
+		}
+		#planet3 /*Division containing control buttons for yellow planet*/
+		{
+			color:orange;
+			position: absolute;
+			top:55%;
+			align-content: center;
+			right: 18%;
+			background-color:#FFF882;
+			border-radius: 20%;
+			padding: 3%; 
+		}
+		#all /*Division containing control buttons for all three planets*/
+		{
+			position: absolute;
+			top:35%;
+			align-content: center;
+			left: 2%;
+			padding: 3%;
+			background-color:gray;
+			border-radius: 20%;
+		}
+
+
+
+
+		</style>
+	
+</head>
+
+<body>
+
+	<div id="sun"></div>
+
+	<div id="planet1reset"></div>
+	<div id="border1"></div>
+	<div id="planet1"><strong> PLANET BLUE </strong><br><br>
+		<button class="btn btn-" onClick="start1()">START</button><br><br>
+		<button class="btn btn-" onClick="stop1()">STOP</button><br><br>
+		<button class="btn btn-" onClick="reset1()"> RESET</button>
+	</div>
+
+	<div id="planet2reset"></div>
+	<div id="border2"></div>
+	<div id="planet2"><strong> PLANET GREEN </strong><br><br>
+		<button class="btn btn-" onClick="start2()">START</button><br><br>
+		<button class="btn btn-" onClick="stop2()">STOP</button><br><br>
+		<button class="btn btn-" onClick="reset2()"> RESET</button>
+	</div>
+
+	<div id="planet3reset"></div>
+	<div id="border3"></div>
+	<div id="planet3"><strong> PLANET YELLOW </strong><br><br>
+		<button class="btn btn-" onClick="start3()">START</button><br><br>
+		<button class="btn btn-" onClick="stop3()">STOP</button><br><br>
+		<button class="btn btn-" onClick="reset3()"> RESET</button>
+	</div>
+
+	<div id="all">
+		<button class="btn btn-default"onClick="startall()">START ALL</button><br><br>
+		<button class="btn btn-default"onClick="stopall()">STOP ALL</button><br><br>
+		<button class="btn btn-default"onClick="resetall()"> RESET ALL</button><br><br>
+	</div>
+
+
+	<script type="text/javascript" src="jquery-2.2.0.min.js"></script>
+
+	<script type="text/javascript">
+
+		function start1() //To start planet BLUE
+		{		
+			$('#planet1reset').addClass("planet1anim");
+			$(".planet1anim").css("animation-play-state", "running");
+			
+		}
+		function start2() //To start planet GREEN
+		{
+			$('#planet2reset').addClass("planet2anim");
+			$(".planet2anim").css("animation-play-state", "running");
+		}
+		function start3() //To start planet YELLOW
+		{
+			$('#planet3reset').addClass("planet3anim");
+			$(".planet3anim").css("animation-play-state", "running");
+
+		}
+		function startall() //To start the motion of all planets
+		{
+			start1();
+			start2();
+			start3();
+		}
+
+
+		function stop1() //To stop planet BLUE
+		{
+			 $(".planet1anim").css("animation-play-state", "paused");
+		}
+		function stop2() //To stop planet GREEN
+		{
+			 $(".planet2anim").css("animation-play-state", "paused");
+		}
+		function stop3() //To stop planet YELLOW
+		{
+			 $(".planet3anim").css("animation-play-state", "paused");
+		}
+		function stopall() //To stop the motion of all planets
+		{ 
+			stop1();
+			stop2();
+			stop3();
+		}
+
+		function reset1() //To reset planet BLUE's motion	
+		{		
+			$("#planet1reset").removeClass();
+		}
+		function reset2() //To reset planet GREEN's motion	
+		{		
+			$("#planet2reset").removeClass();
+		}
+		function reset3() //To reset planet YELLOW's motion
+		{		
+			$("#planet3reset").removeClass();
+		}
+		function resetall()	//To reset the motion of all planets
+		{		
+			reset1();
+			reset2();
+			reset3();
+		}
+
+
+	</script>
+
+</body>
+
+</html>
